@@ -64,7 +64,7 @@ class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndicatorAnimationDel
         // Draw circles
         for i in 0 ..< 3 {
             for j in 0 ..< 3 {
-                let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
+                let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: UIColor.random())
                 let frame = CGRect(x: x + circleSize * CGFloat(j) + circleSpacing * CGFloat(j),
                                    y: y + circleSize * CGFloat(i) + circleSpacing * CGFloat(i),
                                    width: circleSize,
@@ -77,6 +77,21 @@ class NVActivityIndicatorAnimationBallGridPulse: NVActivityIndicatorAnimationDel
                 layer.addSublayer(circle)
             }
         }
+    }
+}
+extension CGFloat {
+    static func random() -> CGFloat {
+        return CGFloat(arc4random()) / CGFloat(UInt32.max)
+    }
+}
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(
+           red:   .random(),
+           green: .random(),
+           blue:  .random(),
+           alpha: 1.0
+        )
     }
 }
 #endif
